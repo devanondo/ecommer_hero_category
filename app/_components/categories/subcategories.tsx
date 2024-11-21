@@ -3,7 +3,7 @@
 import { ChevronRight } from "lucide-react";
 import React from "react";
 import { Category } from "./categories";
-import "./categories.scss";
+import "./categories.css";
 
 const Subcategories = ({ categories }: { categories: Category[] }) => {
   const showMenus = (category: Category) => {
