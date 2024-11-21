@@ -24,11 +24,11 @@ const HeroSlider = () => {
       pagination={{
         clickable: true,
       }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log("slide change")}
+      // onSwiper={(swiper) => console.log(swiper)}
+      // onSlideChange={() => console.log("slide change")}
     >
       <SwiperSlide>
-        <div className="h-96">
+        <div className="h-44 md:h-96">
           <Image
             src="/banner.png"
             width={2000}
@@ -39,7 +39,7 @@ const HeroSlider = () => {
         </div>
       </SwiperSlide>
       <SwiperSlide>
-        <div className="h-96">
+        <div className="h-44 md:h-96">
           <Image
             src="/banner.png"
             width={2000}
@@ -50,7 +50,7 @@ const HeroSlider = () => {
         </div>
       </SwiperSlide>
       <SwiperSlide>
-        <div className="h-96">
+        <div className="h-44 md:h-96">
           <Image
             src="/banner.png"
             width={2000}

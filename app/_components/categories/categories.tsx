@@ -20,10 +20,8 @@ const Categories = async () => {
   );
   const categories: Category[] = await response.json();
 
-  console.log(categories);
-
   return (
-    <div className="container relative">
+    <div className="container relative max-md:hidden">
       <div className="absolute bottom-0 w-60 left-0 z-50">
         <div className="bg-white relative max-w-60 py-3 h-96 flex flex-col justify-between border-r pt-4">
           <Subcategories categories={categories} />

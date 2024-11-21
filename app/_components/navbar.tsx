@@ -5,6 +5,7 @@ import { Heart, ShoppingCart, User, X } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "../lib/utils";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isSuggestionVisible, setIsSuggestionVisible] =
@@ -30,9 +31,11 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="container">
+      <div className="container max-md:hidden">
         <div className="flex items-center justify-between gap-6 py-2">
-          <Image src="logo.svg" alt="Logo" width={100} height={100} />
+          <Link href="/">
+            <Image src="logo.svg" alt="Logo" width={100} height={100} />
+          </Link>
 
           <div
             ref={wrapperRef}
@@ -63,7 +66,7 @@ const Navbar = () => {
 
             {/* suggetion */}
             {isSuggestionVisible && (
-              <div className="w-full absolute top-14 border left-0 rounded bg-white shadow-lg z-50 pt-2">
+              <div className="w-full absolute top-14 border left-0 rounded bg-white shadow-lg z-[100] pt-2">
                 <div className="flex border-b items-center justify-between gap-3 px-2 pb-2">
                   <p className="text-sm font-semibold text-zinc-500">
                     Serach History
@@ -151,10 +154,10 @@ const Navbar = () => {
             />
           </div>
 
-          <div className="h-[55px] flex items-center justify-center">
+          <div className="h-[55px] max-lg:hidden flex items-center justify-center">
             <button>
               <Image
-                src="/cloud.png"
+                src="/cloud.svg"
                 width={200}
                 height={100}
                 alt="cloud"
