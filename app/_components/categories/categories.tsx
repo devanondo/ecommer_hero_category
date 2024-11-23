@@ -1,4 +1,4 @@
-import Subcategories from "./subcategories";
+import SubMenus from "./subcategories";
 
 export interface Category {
   id: number;
@@ -13,18 +13,15 @@ export interface Category {
 
 const Categories = async () => {
   const response = await fetch(
-    "https://api.shope.com.bd/api/v1/public/hero-categories",
-    {
-      cache: "force-cache",
-    }
+    "https://api.shope.com.bd/api/v1/public/hero-categories"
   );
   const categories: Category[] = await response.json();
 
   return (
     <div className="container relative max-md:hidden">
       <div className="absolute bottom-0 w-60 left-0 z-50">
-        <div className="bg-white relative max-w-60 py-3 h-96 flex flex-col justify-between border-r pt-4">
-          <Subcategories categories={categories} />
+        <div className="bg-white max-w-60 h-96 flex flex-col justify-between border-r">
+          <SubMenus categories={categories} />
         </div>
       </div>
     </div>

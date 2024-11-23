@@ -2,63 +2,46 @@
 
 import { ChevronRight } from "lucide-react";
 import React from "react";
-import { Category } from "./categories";
 import "./categories.css";
+import { Category } from "./categories";
 
-const Subcategories = ({ categories }: { categories: Category[] }) => {
-  const showMenus = (category: Category) => {
-    return (
-      <div className="left-[100%] border-l submenus  max-w-60 w-full h-96 bg-white absolute top-0">
-        <div className="relative">
-          <div
-            key={category?.id}
-            className="flex categorie_item px-3 pt-3 items-center justify-between group cursor-pointer"
-          >
-            <p className="text-nowrap text-xs text-orange-500">
-              {category?.title}
-            </p>
-
-            {category?.childrens?.length && category?.childrens?.length > 0 ? (
-              <ChevronRight
-                className="size-3 chev_right text-zinc-500"
-                strokeWidth={3}
-              />
-            ) : null}
-
-            {category?.childrens?.length && category?.childrens?.length > 0
-              ? category?.childrens?.map((child) => (
-                  <React.Fragment key={child.id}>
-                    {showMenus(child)}
-                  </React.Fragment>
-                ))
-              : null}
-          </div>
-        </div>
-      </div>
-    );
-  };
-
+const SubMenus = ({ categories }: { categories: Category[] }) => {
   return (
-    <>
-      {categories?.map((category) => (
-        <div
-          key={category?.id}
-          className="flex categorie_item px-3  items-center justify-between group cursor-pointer"
-        >
-          <p className="text-xs">{category?.title}</p>
-
-          {category?.childrens?.length && category?.childrens?.length > 0 ? (
-            <ChevronRight
-              className="size-3 chev_right text-zinc-500"
-              strokeWidth={3}
-            />
-          ) : null}
-
-          {category?.childrens?.length ? showMenus(category) : null}
-        </div>
-      ))}
-    </>
+    <div className="w-full relative flex flex-col gap-2  h-96 py-3">
+      {categories?.length &&
+        categories?.map((category) => (
+          <HeroMenus key={category.id} category={category} />
+        ))}
+    </div>
   );
 };
 
-export default Subcategories;
+export default SubMenus;
+
+const HeroMenus = ({ category }: { category: Category }) => {
+  return (
+    <div className="w-full categorie_item">
+      {/* menu item*/}
+      <div className="flex items-center justify-between w-full relative px-3  hover:text-orange-500 cursor-pointer">
+        <p className="text-nowrap text-xs">{category?.title}</p>
+
+        {category?.childrens?.length ? (
+          <ChevronRight
+            className="size-3 chev_right text-zinc-500"
+            strokeWidth={3}
+          />
+        ) : null}
+      </div>
+
+      {category?.childrens?.length ? (
+        <div className="border-r left-full top-0 absolute w-full bg-background submenus flex flex-col gap-1  h-96 py-3">
+          {category.childrens?.map((child) => (
+            <React.Fragment key={child.title}>
+              <HeroMenus category={child} />
+            </React.Fragment>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+};
