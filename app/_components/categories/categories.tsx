@@ -13,7 +13,10 @@ export interface Category {
 
 const Categories = async () => {
   const response = await fetch(
-    "https://api.shope.com.bd/api/v1/public/hero-categories"
+    "https://api.shope.com.bd/api/v1/public/hero-categories",
+    {
+      cache: "no-store",
+    }
   );
   const categories: Category[] = await response.json();
 
